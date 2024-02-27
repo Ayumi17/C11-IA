@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="style.css">
+    <title>Inteligencia Artificial</title>
+</head>
+<body>
+    <center>
+    <h1>Inteligencia Artificial</h1>
+    <hr>
+    <h3>Datos de entrenamiento</h3>
+    <textarea cols='80' rows='4' id="codigo">
+       const recognizer = new CustomRecognizer();
+       const btnTrain0 = document.getElementById('btnTrain0');
+       btnTrain0.onclick = () => {
+           recognizer.addTrainingData(0);
+       }
+       
+       const btnTrain1 = document.getElementById('btnTrain1');
+       btnTrain1.onclick = () => {
+           recognizer.addTrainingData(1);
+       }
+
+       const btnTrain = document.getElementById('btnTrain');
+btnTrain.onclick = () => {
+    recognizer.train();
+    
+   
+}
+
+
+        </textarea><br>
+        <button type="button" id="copyClip" data-clipboard-target="#codigo">Copiar</button>
+        <script src="clipboard.min.js"></script>
+
+    <br><br>
+    <hr>
+    <h3>Actualizar los botones</h3>
+    <textarea cols='80' rows='4' id="codigo2">
+        const count0 = recognizer.getTrainingCount(0);
+        const count1 = recognizer.getTrainingCount(1);
+        
+        btnTrain0.innerHTML = "Thumbs Up: " + count0 + " trained";
+        btnTrain1.innerHTML = "Thumbs Down: " + count1 + " trained";
+        
+        btnTrain.disabled = (!count0 || !count1 || recognizer.training || recognizer.trained);
+          
+        </textarea><br>
+        <button type="button" id="bt1" class="bt1" data-clipboard-target="#codigo2">Copiar</button>
+        <script>
+
+   
+    var clipboard2 = new Clipboard('.bt1');
+    </script>
+    </center>
+    
+</body>
+</html>
